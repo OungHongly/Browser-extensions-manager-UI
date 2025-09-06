@@ -201,6 +201,15 @@ extContainer.addEventListener("click", (e) => {
     // console.log(!data[index].isActive);
     // console.log(data[index]);
     data[index].isActive = !data[index].isActive;
+    for (let [i, item] of allFilterBtn.entries()) {
+      if (item.classList.contains("btn__all")) {
+        item.classList.add("btn--active");
+        item.classList.remove("btn__inactive");
+      } else {
+        item.classList.remove("btn--active");
+        item.classList.add("btn__inactive");
+      }
+    }
     displayExtensions();
   }
 });
