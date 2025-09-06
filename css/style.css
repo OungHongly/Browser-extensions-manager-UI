@@ -75,7 +75,9 @@
   --color-text: var(--Neutral-800);
   --color-border: var(--Neutral-600);
   --color-border-focus: var(--primary-tint);
-  --color-gray-bg: var(--Neutral-300);
+  --color-gray-300: var(--Neutral-300);
+  --color-gray-200: var(--Neutral-200);
+  --color-gray-100: var(--Neutral-100);
 
   /* Shadows */
   --shadow-light: 0 1px 2px rgba(0, 0, 0, 0.08);
@@ -161,7 +163,47 @@ span {
   font-size: var(--text-sm);
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ==== layout styling ==== */
+body {
+  background-image: var(--color-bg);
+}
 .container {
   max-width: 1200px;
+
+  width: 90%;
+  margin: 0 auto;
 }
+
+/* Header  */
+.header {
+  background-color: var(--Neutral-0);
+  margin-top: var(--space-lg);
+
+  padding: var(--space-ms);
+  display: flex;
+  justify-content: space-between;
+  border-radius: var(--space-md);
+  box-shadow: var(--shadow-light);
+}
+.header__logo {
+  height: 35px;
+}
+.header .btn-theme {
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: var(--space-sm);
+  background-color: var(--color-gray-100);
+}
+.header .btn-theme img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Filter */
