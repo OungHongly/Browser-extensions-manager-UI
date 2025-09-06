@@ -196,14 +196,15 @@ span {
 
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 }
 .active {
   justify-content: flex-end;
   background-color: var(--primary-shade);
 }
 .btn__toggle-switch {
-  height: 1.4rem;
-  width: 1.4rem;
+  height: 1.3rem;
+  width: 1.3rem;
   border-radius: var(--space-lg);
   background-color: var(--Neutral-0);
 }
@@ -307,7 +308,7 @@ body {
 }
 
 /* Stats */
-/* button-stats */
+/* button-stats: hover */
 .btn__inactive:hover {
   color: var(--Neutral-600);
 }
@@ -319,12 +320,20 @@ body {
 .active:hover {
   background-color: var(--primary-tint);
 }
-.btn:focus {
-}
 .btn--active {
   background-color: var(--primary-shade);
   color: var(--Neutral-0);
 }
 .btn--active:hover {
   background-color: var(--primary-base);
+}
+
+/* button-stats: focus*/
+.btn:focus {
+  border: 1px solid var(--Neutral-0);
+  outline: 2px solid var(--primary-base);
+}
+.btn__toggle:focus {
+  border: 1px solid var(--Neutral-0);
+  outline: 2px solid var(--primary-base);
 }
