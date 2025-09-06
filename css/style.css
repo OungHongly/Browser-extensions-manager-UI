@@ -121,7 +121,6 @@ h6 {
 /* use website Typescale.com */
 button {
   font-family: inherit;
-  color: var(--Neutral-900);
 }
 h1 {
   font-size: var(--text-h1);
@@ -181,22 +180,26 @@ span {
   border: none;
   background-color: var(--Neutral-0);
   border-radius: var(--space-lg);
+  cursor: pointer;
+  transition: 0.2s;
 }
 .btn__toggle {
   background-color: var(--Neutral-300);
+  color: var(--Neutral-900);
   height: 1.8rem;
   width: 3.5rem;
   padding: 2px;
   border: none;
   border-radius: var(--space-lg);
   cursor: pointer;
+  transition: 0.2s;
 
   display: flex;
   justify-content: flex-end;
 }
 .active {
   justify-content: flex-start;
-  background-color: var(--primary-base);
+  background-color: var(--primary-shade);
 }
 .btn__toggle-switch {
   height: 1.4rem;
@@ -247,12 +250,16 @@ body {
   height: 35px;
   border-radius: var(--space-sm);
   background-color: var(--color-gray-100);
+  cursor: pointer;
+  transition: 0.15s;
 }
 .header .btn-theme img {
   width: 20px;
   height: 20px;
 }
-
+.btn-theme:hover {
+  background-color: var(--Neutral-300);
+}
 /* Filter */
 .filter {
   margin-top: var(--space-lx);
@@ -297,4 +304,27 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Stats */
+/* button-stats */
+.btn__inactive:hover {
+  color: var(--Neutral-600);
+}
+.btn__remove:hover {
+  background-color: var(--primary-shade);
+  color: var(--Neutral-0);
+  border: 1px solid var(--primary-shade);
+}
+.active:hover {
+  background-color: var(--primary-tint);
+}
+.btn:focus {
+}
+.btn--active {
+  background-color: var(--primary-shade);
+  color: var(--Neutral-0);
+}
+.btn--active:hover {
+  background-color: var(--primary-base);
 }
