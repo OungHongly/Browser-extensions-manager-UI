@@ -85,17 +85,82 @@ const btnTheme = document.getElementById("btn--theme");
 const body = document.querySelector("body");
 const logo = document.getElementById("logo");
 const themeIcon = document.getElementById("theme--icon");
+const allFilterBtn = document
+  .querySelector(".filter__button")
+  .querySelectorAll(".btn");
 
 // select extensions elements
 const extContainer = document.querySelector(".extension__card-wrapper");
-// const btnToggle = document.querySelector(".btn__toggle");
-const allBtnToggle = document.querySelectorAll(".btn__toggle");
 
-// display extensions from data
+// Function display extensions from data
 const displayExtensions = function () {
   extContainer.innerHTML = "";
   for (let [index, item] of data.entries()) {
     // console.log(item);
+    const isActive = item.isActive ? "active" : "";
+    const extCard = `<div class="extension__card">
+          <div class="extension__card-body">
+            <div class="extension__card-logo">
+              <img src="${item.logo}" alt="extension-icon"
+                class="extension-icon">
+            </div>
+            <div class="extension__card-context">
+              <p class="extension__card-heading">${item.name}</p>
+              <p class="extension__card-description">
+                ${item.description}
+              </p>
+            </div>
+
+          </div>
+          <div class="extension__button">
+            <button class="btn btn__remove btn--secondary">Remove</button>
+            <button class="btn__toggle ${isActive}" data-index='${index}'>
+              <div class="btn__toggle-switch"></div>
+            </button>
+          </div>
+        </div>`;
+    extContainer.innerHTML += extCard;
+  }
+};
+
+// Function filter active display
+const displayExtensionsActive = function () {
+  extContainer.innerHTML = "";
+  for (let [index, item] of data.entries()) {
+    // console.log(item);
+    if (!item.isActive) continue;
+    const isActive = item.isActive ? "active" : "";
+    const extCard = `<div class="extension__card">
+          <div class="extension__card-body">
+            <div class="extension__card-logo">
+              <img src="${item.logo}" alt="extension-icon"
+                class="extension-icon">
+            </div>
+            <div class="extension__card-context">
+              <p class="extension__card-heading">${item.name}</p>
+              <p class="extension__card-description">
+                ${item.description}
+              </p>
+            </div>
+
+          </div>
+          <div class="extension__button">
+            <button class="btn btn__remove btn--secondary">Remove</button>
+            <button class="btn__toggle ${isActive}" data-index='${index}'>
+              <div class="btn__toggle-switch"></div>
+            </button>
+          </div>
+        </div>`;
+    extContainer.innerHTML += extCard;
+  }
+};
+
+// Function filter Inactive display
+const displayExtensionsInActive = function () {
+  extContainer.innerHTML = "";
+  for (let [index, item] of data.entries()) {
+    // console.log(item);
+    if (item.isActive) continue;
     const isActive = item.isActive ? "active" : "";
     const extCard = `<div class="extension__card">
           <div class="extension__card-body">
@@ -152,3 +217,25 @@ btnTheme.addEventListener("click", () => {
     themeIcon.src = "./assets/images/icon-moon.svg";
   }
 });
+
+console.log(allFilterBtn);
+for (let [i, item] of allFilterBtn.entries()) {
+  item.addEventListener("click", () => {
+    item.classList.add("btn--active");
+    item.classList.remove("btn__inactive");
+    if (item.classList.contains("btn__all")) {
+      displayExtensions();
+    } else if (item.classList.contains("btn__active")) {
+      displayExtensionsActive();
+    } else {
+      displayExtensionsInActive();
+    }
+    for (let [j, btn] of allFilterBtn.entries()) {
+      console.log(!(btn[j] === item[i]));
+      if (j !== i) {
+        btn.classList.remove("btn--active");
+        btn.classList.add("btn__inactive");
+      }
+    }
+  });
+}
