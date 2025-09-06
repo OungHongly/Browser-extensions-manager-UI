@@ -27,6 +27,7 @@
   --text-sm: 1.28rem; /* 1.28rem*/
   --text-link: 1.4rem; /* 1.4rem */
   --text-paragraph: 1.6rem; /* 1.6rem */
+  --text-title: 2rem;
   --text-h6: 2.3rem;
   --text-h5: 2.5rem;
   --text-h4: 3.125rem;
@@ -41,6 +42,7 @@
   --space-md: 1.6rem; /* 16px */
   --space-ml: 2.4rem;
   --space-lg: 3.2rem; /* 32px */
+  --space-lx: 4.8rem;
   --space-xl: 6.4rem; /* 64px */
   --space-2xl: 12.8rem; /* 128px */
   /* Guidance:
@@ -72,15 +74,15 @@
 
   /* UI color */
   --color-bg: var(--Light-Gradient);
-  --color-text: var(--Neutral-800);
-  --color-border: var(--Neutral-600);
+  --color-text: var(--Neutral-900);
+  --color-border: var(--Neutral-300);
   --color-border-focus: var(--primary-tint);
   --color-gray-300: var(--Neutral-300);
   --color-gray-200: var(--Neutral-200);
   --color-gray-100: var(--Neutral-100);
 
   /* Shadows */
-  --shadow-light: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-light: 0 1px 2px 1px rgba(0, 0, 0, 0.08);
   --shadow-hard: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 * {
@@ -116,6 +118,9 @@ h6 {
 }
 
 /* use website Typescale.com */
+button {
+  font-family: inherit;
+}
 h1 {
   font-size: var(--text-h1);
 }
@@ -168,6 +173,17 @@ span {
   justify-content: center;
   align-items: center;
 }
+/* Components */
+.btn {
+  padding: var(--space-xs) var(--space-ms);
+  border: none;
+  background-color: var(--Neutral-0);
+  border-radius: var(--space-lg);
+  box-shadow: var(--shadow-light);
+}
+.border {
+  border: 1px solid var(--color-border);
+}
 
 /* ==== layout styling ==== */
 body {
@@ -207,3 +223,14 @@ body {
 }
 
 /* Filter */
+.filter {
+  margin-top: var(--space-lx);
+  margin-bottom: var(--space-ml);
+
+  display: flex;
+  justify-content: space-between;
+}
+.filter__button {
+  display: flex;
+  gap: var(--space-ms);
+}
