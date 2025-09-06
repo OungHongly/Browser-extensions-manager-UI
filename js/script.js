@@ -88,26 +88,16 @@ const themeIcon = document.getElementById("theme--icon");
 
 // select extensions elements
 const extContainer = document.querySelector(".extension__card-wrapper");
-const btnToggle = document.querySelector(".btn__toggle");
-
-// dark mode feature
-btnTheme.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
-
-  if (body.classList.contains("dark-mode")) {
-    logo.src = "./assets/images/logo.png";
-    themeIcon.src = "./assets/images/icon-sun.svg";
-  } else {
-    logo.src = "./assets/images/logo.svg";
-    themeIcon.src = "./assets/images/icon-moon.svg";
-  }
-});
+// const btnToggle = document.querySelector(".btn__toggle");
+const allBtnToggle = document.querySelectorAll(".btn__toggle");
 
 // display extensions from data
-for (let item of data) {
-  console.log(item);
-  const isActive = item.isActive ? "active" : "";
-  const extCard = `<div class="extension__card">
+const displayExtensions = function () {
+  extContainer.innerHTML = "";
+  for (let [index, item] of data.entries()) {
+    // console.log(item);
+    const isActive = item.isActive ? "active" : "";
+    const extCard = `<div class="extension__card">
           <div class="extension__card-body">
             <div class="extension__card-logo">
               <img src="${item.logo}" alt="extension-icon"
@@ -123,10 +113,42 @@ for (let item of data) {
           </div>
           <div class="extension__button">
             <button class="btn btn__remove btn--secondary">Remove</button>
-            <button class="btn__toggle ${isActive}">
+            <button class="btn__toggle ${isActive}" data-index='${index}'>
               <div class="btn__toggle-switch"></div>
             </button>
           </div>
         </div>`;
-  extContainer.innerHTML += extCard;
-}
+    extContainer.innerHTML += extCard;
+  }
+};
+
+// Display extensions
+displayExtensions();
+
+// Toggle active extension
+extContainer.addEventListener("click", (e) => {
+  const btn = e.target.closest(".btn__toggle");
+  if (!btn) return;
+  if (btn.classList.contains("btn__toggle")) {
+    // console.log(e.target);
+    const index = btn.dataset.index;
+    // console.log(index);
+    // console.log(!data[index].isActive);
+    // console.log(data[index]);
+    data[index].isActive = !data[index].isActive;
+    displayExtensions();
+  }
+});
+
+// dark mode feature
+btnTheme.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    logo.src = "./assets/images/logo.png";
+    themeIcon.src = "./assets/images/icon-sun.svg";
+  } else {
+    logo.src = "./assets/images/logo.svg";
+    themeIcon.src = "./assets/images/icon-moon.svg";
+  }
+});
