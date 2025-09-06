@@ -86,6 +86,11 @@ const body = document.querySelector("body");
 const logo = document.getElementById("logo");
 const themeIcon = document.getElementById("theme--icon");
 
+// select extensions elements
+const extContainer = document.querySelector(".extension__card-wrapper");
+const btnToggle = document.querySelector(".btn__toggle");
+
+// dark mode feature
 btnTheme.addEventListener("click", () => {
   body.classList.toggle("dark-mode");
 
@@ -97,3 +102,31 @@ btnTheme.addEventListener("click", () => {
     themeIcon.src = "./assets/images/icon-moon.svg";
   }
 });
+
+// display extensions from data
+for (let item of data) {
+  console.log(item);
+  const isActive = item.isActive ? "active" : "";
+  const extCard = `<div class="extension__card">
+          <div class="extension__card-body">
+            <div class="extension__card-logo">
+              <img src="${item.logo}" alt="extension-icon"
+                class="extension-icon">
+            </div>
+            <div class="extension__card-context">
+              <p class="extension__card-heading">${item.name}</p>
+              <p class="extension__card-description">
+                ${item.description}
+              </p>
+            </div>
+
+          </div>
+          <div class="extension__button">
+            <button class="btn btn__remove btn--secondary">Remove</button>
+            <button class="btn__toggle ${isActive}">
+              <div class="btn__toggle-switch"></div>
+            </button>
+          </div>
+        </div>`;
+  extContainer.innerHTML += extCard;
+}
