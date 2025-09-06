@@ -227,7 +227,7 @@ btnTheme.addEventListener("click", () => {
   }
 });
 
-console.log(allFilterBtn);
+// Button filter extension
 for (let [i, item] of allFilterBtn.entries()) {
   item.addEventListener("click", () => {
     item.classList.add("btn--active");
@@ -248,3 +248,5 @@ for (let [i, item] of allFilterBtn.entries()) {
     }
   });
 }
+
+// Remove extension
