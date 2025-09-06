@@ -74,9 +74,15 @@
   --primary-shade: var(--Red-700);
 
   /* UI color */
+  --color-element-bg: var(--Neutral-0);
+  --color-white: var(--Neutral-0);
+  --color-button-text: var(--Neutral-800);
   --color-bg: var(--Light-Gradient);
+  --color-bg-button: var(--Neutral-0);
   --color-text: var(--Neutral-900);
+  --color-text-paragraph: var(--Neutral-600);
   --color-border: var(--Neutral-300);
+  --color-border-card: none;
   --color-border-focus: var(--primary-tint);
   --color-gray-300: var(--Neutral-300);
   --color-gray-200: var(--Neutral-200);
@@ -104,6 +110,7 @@ body {
   font-weight: var(--fw-normal);
   line-height: var(--line-height-normal);
   color: var(--color-text);
+  min-height: 100vh;
 }
 
 h1,
@@ -121,6 +128,7 @@ h6 {
 /* use website Typescale.com */
 button {
   font-family: inherit;
+  color: var(--color-white);
 }
 h1 {
   font-size: var(--text-h1);
@@ -178,14 +186,14 @@ span {
 .btn {
   padding: var(--space-xs) var(--space-ms);
   border: none;
-  background-color: var(--Neutral-0);
+  color: var(--color-button-text);
+  background-color: var(--color-element-bg);
   border-radius: var(--space-lg);
   cursor: pointer;
   transition: 0.2s;
 }
 .btn__toggle {
-  background-color: var(--Neutral-300);
-  color: var(--Neutral-900);
+  background-color: var(--color-gray-300);
   height: 1.8rem;
   width: 3.5rem;
   padding: 2px;
@@ -215,7 +223,7 @@ span {
   background-color: var(--primary-base);
 }
 .btn--secondary {
-  background-color: var(--Neutral-0);
+  background-color: var(--color-bg-button);
   font-weight: var(--fw-medium);
   border: 1px solid var(--color-border);
 }
@@ -233,7 +241,7 @@ body {
 
 /* Header  */
 .header {
-  background-color: var(--Neutral-0);
+  background-color: var(--color-element-bg);
   margin-top: var(--space-lg);
 
   padding: var(--space-ms);
@@ -259,7 +267,7 @@ body {
   height: 20px;
 }
 .btn-theme:hover {
-  background-color: var(--Neutral-300);
+  background-color: var(--color-gray-300);
 }
 /* Filter */
 .filter {
@@ -284,10 +292,11 @@ body {
   margin-bottom: var(--space-lx);
 }
 .extension__card {
-  background-color: var(--Neutral-0);
+  background-color: var(--color-element-bg);
   padding: var(--space-md);
   border-radius: var(--space-md);
   box-shadow: var(--shadow-light);
+  border: 1px solid var(--color-border-card);
 }
 .extension__card-body {
   display: flex;
@@ -301,7 +310,7 @@ body {
   margin-bottom: var(--space-sx);
 }
 .extension__card-description {
-  color: var(--Neutral-600);
+  color: var(--color-text-paragraph);
 }
 .extension__button {
   display: flex;
@@ -316,7 +325,7 @@ body {
 }
 .btn__remove:hover {
   background-color: var(--primary-shade);
-  color: var(--Neutral-0);
+  color: var(--color-white);
   border: 1px solid var(--primary-shade);
 }
 .active:hover {
@@ -324,7 +333,7 @@ body {
 }
 .btn--active {
   background-color: var(--primary-shade);
-  color: var(--Neutral-0);
+  color: var(--color-white);
 }
 .btn--active:hover {
   background-color: var(--primary-base);
@@ -332,11 +341,11 @@ body {
 
 /* button-stats: focus*/
 .btn:focus {
-  border: 1px solid var(--Neutral-0);
+  border: 1px solid var(--color-element-bg);
   outline: 2px solid var(--primary-base);
 }
 .btn__toggle:focus {
-  border: 1px solid var(--Neutral-0);
+  border: 1px solid var(--color-element-bg);
   outline: 2px solid var(--primary-base);
 }
 
@@ -357,4 +366,27 @@ body {
     align-items: center;
     gap: var(--space-md);
   }
+}
+
+/* Dark mode theme */
+body.dark-mode {
+  --primary-tint: var(--Red-400);
+  --primary-base: var(--Red-400);
+  --primary-shade: var(--Red-700);
+
+  /* UI color */
+  --color-bg: var(--Dark-Gradient);
+  --color-bg-button: var(--Neutral-800);
+
+  --color-button-text: var(--Neutral-0);
+  --color-element-bg: var(--Neutral-800);
+  --color-white: var(--Neutral-900);
+  --color-text: var(--Neutral-0);
+  --color-text-paragraph: var(--Neutral-300);
+  --color-border: var(--Neutral-600);
+  --color-border-card: var(--Neutral-600);
+  --color-border-focus: var(--primary-tint);
+  --color-gray-300: var(--Neutral-600);
+  --color-gray-200: var(--Neutral-200);
+  --color-gray-100: var(--Neutral-700);
 }
