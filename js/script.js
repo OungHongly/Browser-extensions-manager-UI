@@ -93,7 +93,7 @@ const allFilterBtn = document
 const extContainer = document.querySelector(".extension__card-wrapper");
 
 // Function display extensions from data
-const displayExtensions = function () {
+const displayExtensions = function (data) {
   extContainer.innerHTML = "";
   for (let [index, item] of data.entries()) {
     // console.log(item);
@@ -113,7 +113,7 @@ const displayExtensions = function () {
 
           </div>
           <div class="extension__button">
-            <button class="btn btn__remove btn--secondary">Remove</button>
+            <button class="btn btn__remove btn--secondary" data-index='${index}'>Remove</button>
             <button class="btn__toggle ${isActive}" data-index='${index}'>
               <div class="btn__toggle-switch"></div>
             </button>
@@ -124,7 +124,7 @@ const displayExtensions = function () {
 };
 
 // Function filter active display
-const displayExtensionsActive = function () {
+const displayExtensionsActive = function (data) {
   extContainer.innerHTML = "";
   for (let [index, item] of data.entries()) {
     // console.log(item);
@@ -156,7 +156,7 @@ const displayExtensionsActive = function () {
 };
 
 // Function filter Inactive display
-const displayExtensionsInActive = function () {
+const displayExtensionsInActive = function (data) {
   extContainer.innerHTML = "";
   for (let [index, item] of data.entries()) {
     // console.log(item);
@@ -188,7 +188,7 @@ const displayExtensionsInActive = function () {
 };
 
 // Display extensions
-displayExtensions();
+displayExtensions(data);
 
 // Toggle active extension
 extContainer.addEventListener("click", (e) => {
@@ -210,7 +210,7 @@ extContainer.addEventListener("click", (e) => {
         item.classList.add("btn__inactive");
       }
     }
-    displayExtensions();
+    displayExtensions(data);
   }
 });
 
@@ -233,11 +233,11 @@ for (let [i, item] of allFilterBtn.entries()) {
     item.classList.add("btn--active");
     item.classList.remove("btn__inactive");
     if (item.classList.contains("btn__all")) {
-      displayExtensions();
+      displayExtensions(data);
     } else if (item.classList.contains("btn__active")) {
-      displayExtensionsActive();
+      displayExtensionsActive(data);
     } else {
-      displayExtensionsInActive();
+      displayExtensionsInActive(data);
     }
     for (let [j, btn] of allFilterBtn.entries()) {
       console.log(!(btn[j] === item[i]));
@@ -250,3 +250,16 @@ for (let [i, item] of allFilterBtn.entries()) {
 }
 
 // Remove extension
+extContainer.addEventListener("click", (e) => {
+  const btnRemove = e.target.closest(".btn__remove");
+  console.log(btnRemove);
+  if (!btnRemove) return;
+  if (btnRemove.classList.contains("btn__remove")) {
+    const index = btnRemove.dataset.index;
+    console.log(index);
+    if (index > -1) {
+      data.splice(index, 1);
+    }
+    displayExtensions(data);
+  }
+});
